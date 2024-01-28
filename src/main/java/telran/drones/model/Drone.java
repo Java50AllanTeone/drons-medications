@@ -1,7 +1,7 @@
 package telran.drones.model;
 import jakarta.persistence.*;
 import lombok.*;
-import telran.drones.dto.DroneDto;
+import telran.drones.dto.*;
 import telran.drones.dto.State;
 
 @Entity

@@ -32,7 +32,7 @@ public class DronesExceptionsController {
 	
 	@ExceptionHandler(IllegalStateException.class)
 	ResponseEntity<String> alreadyExistsHandler(IllegalStateException e) {
-		return returnResponse(e.getMessage(), HttpStatus.ALREADY_REPORTED);
+		return returnResponse(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)
