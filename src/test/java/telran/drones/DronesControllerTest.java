@@ -77,7 +77,7 @@ public class DronesControllerTest {
 		String response = mockMvc.perform(post("http://localhost:8080/drones")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(jsonDroneDto))
-				.andExpect(status().isAlreadyReported())
+				.andExpect(status().isBadRequest())
 				.andReturn()
 				.getResponse()
 				.getContentAsString();
@@ -155,7 +155,7 @@ public class DronesControllerTest {
 		String response = mockMvc.perform(post("http://localhost:8080/drones").contentType(MediaType.APPLICATION_JSON)
 				.content(jsonDroneDto)).andExpect(status().isBadRequest())
 				.andReturn().getResponse().getContentAsString();
-		assertEquals(WRONG_DRONE_NUMBER, response);
+		assertEquals(WRONG_DRONE_NUMBER_MESSAGE, response);
 	}
 	
 	@Test
@@ -168,7 +168,7 @@ public class DronesControllerTest {
 				.andReturn()
 				.getResponse()
 				.getContentAsString();
-		assertEquals(WRONG_MEDICATION_CODE, response);
+		assertEquals(WRONG_MEDICATION_CODE_MESSAGE, response);
 	}
 	
 	@Test
@@ -194,7 +194,7 @@ public class DronesControllerTest {
 				.andReturn()
 				.getResponse()
 				.getContentAsString();
-		allFieldsMissingTest(new String[] {MISSING_DRONE_NUMBER_MESSAGE, MISSING_MEDICATION_CODE}, response);
+		allFieldsMissingTest(new String[] {MISSING_DRONE_NUMBER_MESSAGE, MISSING_MEDICATION_CODE_MESSAGE}, response);
 	}
 		
 	private void allFieldsMissingTest(String[] expectedMessages, String response) {
